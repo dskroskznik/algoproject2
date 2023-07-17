@@ -1,2 +1,3 @@
-# algoproject2
-algoproject2
+# Algorithms Project 2
+## By: Vu Le, Taher Ali, Dylan Skroskznik
+
