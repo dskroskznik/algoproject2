@@ -1,7 +1,7 @@
 ## Algorithm Notes:
     Input: rows: r, columns: c
     Input: Matrix[r][c]
-    Output: T: Traversal cost value, S: Starting position on north border, D: Directions appeneded string  
+    Output: T: Traversal cost value, S: Starting position on north border, D: Directions appended string  
     Algo: matrixtraversal
 
     r = input line argument 1 for rows of matrix
@@ -25,7 +25,7 @@
                 southeast = distancematrix[i+1][j+1] * 1.40
                 minroute = min(south, southeast)
                 distancematrix[i][j] = minroute + matrix[i][j]
-            else if
+            else if j is c-1
                 south = distancematrix[i+1][j]
                 southwest = distancematrix[i+1][j-1] * 1.40
                 minroute = min(south, southwest)
