@@ -1,3 +1,3 @@
-# Algorithms Project 2
+# Efficient Matrix Traversal: Dynammic Backtracking Algorithm
 ## By: Vu Le, Taher Ali, Dylan Skroskznik
 
