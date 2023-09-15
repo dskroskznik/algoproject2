@@ -3,7 +3,6 @@
 
 int main() 
 {
-
     unsigned int r, c, i, j, dir;
 
     ifstream file("input.txt");               // open input file
