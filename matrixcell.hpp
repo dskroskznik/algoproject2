@@ -8,8 +8,8 @@
 using namespace std;
 
 struct Cell {          // DS for each cell, we can store distance from current cell to the top, as well as previous directions we've computed, and where we started
-    double distance;
     vector<string> directions;
+    double distance;
     int startColumn;
 };
 

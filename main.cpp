@@ -3,11 +3,13 @@
 
 int main() 
 {
-    unsigned int r, c, i, j, dir;
+    unsigned int r, c, i, j, k, m;
 
-    ifstream file("input.txt");               // open input file
+    // Change text filename here 
+//  ifstream file("input-small.txt");
+    ifstream file("input-tiny.txt");
     if (!file){
-        cerr << "Error opening file.\n";
+        cerr << "There was an error opening the text file.\n";
         exit(1);
     }
 
@@ -22,14 +24,14 @@ int main()
     file.close();
 
     vector<vector<Cell>> paths = calculatePath(matrix, matrix.size(), matrix[0].size());
-    ofstream output("output.txt");
-                                                        // iterate through bottom row of paths matrix and output distance, start column, 
-                                                        // and directions to output txt
+    ofstream output("traversal-output.txt");
+    // iterate through bottom row of paths matrix and output distance, start column, 
+    // and directions to output txt
     int bottomRow = paths.size() - 1;         
-    for (i = 0; i < paths[bottomRow].size(); i++){
+    for (k = 0; k < paths[bottomRow].size(); k++){
         output << paths[bottomRow][i].distance << " " <<paths[bottomRow][i].startColumn << " ";
-        for (dir = 0; dir < paths[bottomRow][i].directions.size(); dir++){
-            output << paths[bottomRow][i].directions[dir] << " ";
+        for (m = 0; m < paths[bottomRow][i].directions.size(); m++){
+            output << paths[bottomRow][i].directions[k] << " ";
         }
         output << endl;
     }
