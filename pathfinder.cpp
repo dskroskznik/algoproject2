@@ -15,7 +15,8 @@ vector<vector<Cell>> calculatePath(vector<vector<double> > &matrix, int rows, in
         for (j=0;j<cols;j++) 
         {
             // Initialize the top row of the path with the distances from the matrix plus starting column.
-            if (i==0) {               
+            if (i==0) 
+            {               
                 paths[0][j].distance  = matrix[0][j];   
                 paths[0][j].startColumn = j;
             }
@@ -28,22 +29,25 @@ vector<vector<Cell>> calculatePath(vector<vector<double> > &matrix, int rows, in
                 // SOUTH(S) = 1.0 | SOUTHEAST(SE) = 1.4 |SOUTHWEST(SW) = 1.4
                 int dirFlag = 0;
                 
-                if (dirFlag == 0) {
-                    // SOUTH was the less costly traversal in the matrix
+                // SOUTH was the less costly traversal in the matrix
+                if (dirFlag==0) 
+                {
                     paths[i][j].directions = paths[i-1][j].directions;  
                     paths[i][j].directions.push_back("S");
                     paths[i][j].startColumn = paths[i-1][j].startColumn;           
                 }
-                if (min > paths[i-1][j+1].distance + matrix[i][j] * 1.4 && j < cols - 1) {
-                    // SOUTHWEST was the less costly traversal in the matrix
+                // SOUTHWEST was the less costly traversal in the matrix
+                if (min>paths[i-1][j+1].distance + matrix[i][j] * 1.4 && j<cols - 1) 
+                {
                     min = paths[i-1][j+1].distance + matrix[i][j] * 1.4;
                     paths[i][j].directions = paths[i-1][j+1].directions;
                     paths[i][j].directions.push_back("SW");
                     paths[i][j].startColumn = paths[i-1][j+1].startColumn;
                     dirFlag = 1;
                 }
-                if (min > paths[i-1][j-1].distance + matrix[i][j] * 1.4 && j > 0) { 
-                    // SOUTHEAST was the less costly traversal in the matrix
+                // SOUTHEAST was the less costly traversal in the matrix
+                if (min>paths[i-1][j-1].distance + matrix[i][j] * 1.4 && j>0) 
+                {   
                     min = paths[i-1][j-1].distance + matrix[i][j] * 1.4;
                     paths[i][j].directions = paths[i-1][j-1].directions;
                     paths[i][j].directions.push_back("SE");
