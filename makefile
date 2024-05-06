@@ -9,19 +9,13 @@ CLEAN = $(TARGET) $(OBJS) output.txt
 
 all: $(TARGET)
 
-%.o: %.cpp $(HEADERS)
-	$(CPP) $(CPPFLAGS) -c $< -o $@
 $(TARGET): $(OBJS)
 	$(CPP) $(CPPFLAGS) $^ -o $@
+
+%.o: %.cpp $(HEADERS)
+	$(CPP) $(CPPFLAGS) -c $< -o $@
+
 clean:
 	rm -f $(CLEAN)
-.PHONY: cleaned safely
 
-#Checks for missing file names
-ifeq ($(strip $(SRCS)),)
-$(error No dependent source files found.)
-endif
-
-ifeq ($(strip $(TARGET)),)
-$(error No target source file found.)
-endif
+.PHONY: clean

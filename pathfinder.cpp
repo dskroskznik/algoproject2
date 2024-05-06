@@ -4,15 +4,14 @@
 
 using namespace std;
 
-vector<vector<Cell>> calculatePath(vector<vector<double> > &matrix, int rows, int cols)
+vector<vector<Cell>> calculatePath(vector<vector<double>>& matrix, int rows, int cols)
 { 
     // Create a 2D vector to store the distance and direction information for each cell.
     vector<vector<Cell>> paths(rows, vector<Cell>(cols));
-    int i, j;
 
-    for (i=0;i<rows;i++) 
+    for (int i=0;i<rows;i++) 
     {
-        for (j=0;j<cols;j++) 
+        for (int j=0;j<cols;j++) 
         {
             // Initialize the top row of the path with the distances from the matrix plus starting column.
             if (i==0) 
@@ -40,19 +39,20 @@ vector<vector<Cell>> calculatePath(vector<vector<double> > &matrix, int rows, in
                 if (min>paths[i-1][j+1].distance + matrix[i][j] * 1.4 && j<cols - 1) 
                 {
                     min = paths[i-1][j+1].distance + matrix[i][j] * 1.4;
+                    dirFlag = 1;
                     paths[i][j].directions = paths[i-1][j+1].directions;
                     paths[i][j].directions.push_back("SW");
                     paths[i][j].startColumn = paths[i-1][j+1].startColumn;
-                    dirFlag = 1;
+                    
                 }
                 // SOUTHEAST was the less costly traversal in the matrix
                 if (min>paths[i-1][j-1].distance + matrix[i][j] * 1.4 && j>0) 
                 {   
                     min = paths[i-1][j-1].distance + matrix[i][j] * 1.4;
+                    dirFlag = 2;
                     paths[i][j].directions = paths[i-1][j-1].directions;
                     paths[i][j].directions.push_back("SE");
                     paths[i][j].startColumn = paths[i-1][j-1].startColumn;
-                    dirFlag = 2;
                 }
                 paths[i][j].distance = min;
             }

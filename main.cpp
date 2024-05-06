@@ -1,19 +1,20 @@
 #include <iostream>
+#include <fstream>
+#include <vector>
 #include "pathfinder.cpp"
 
 int main() 
 {
-    unsigned int c, i, j, k, m, r;
-
-    // Change text filename here 
-//  ifstream file("input-small.txt");
-    ifstream file("input-tiny.txt");
+    //ifstream file("input-tiny.txt");
+    ifstream file("input-small.txt");
     if (!file)
     {
         cerr << "There was an error opening the text file.\n";
         exit(1);
     }
 
+    unsigned int i, j, k, m;
+    unsigned int c, r;
     file >> r >> c;
 
     vector<vector<double>> matrix(r, vector<double>(c));
@@ -35,11 +36,11 @@ int main()
     int bottomRow = paths.size() - 1;         
     for (k=0;k<paths[bottomRow].size();k++)
     {
-        output << paths[bottomRow][i].distance << " " <<paths[bottomRow][i].startColumn << " ";
+        output << paths[bottomRow][k].distance << " " << paths[bottomRow][k].startColumn << " ";
     
-        for (m=0;m<paths[bottomRow][i].directions.size();m++)
+        for (m=0;m<paths[bottomRow][m].directions.size();m++)
         {
-            output << paths[bottomRow][i].directions[k] << " ";
+            output << paths[bottomRow][k].directions[m] << " ";
         }
 
         output << endl;
