@@ -9,10 +9,10 @@ In Optimal Matrix Traversal, we as a group developed a program that implemented 
 ## Contents
 - [Clone And Run](#clone-and-run)
 - [Documentation](#documentation)
-- [Features](#project-algorithm-pseudo-code)
+- [Analysis](#analysis)
 - [License](#license)
 
-## Clone & Run
+## Clone And Run
 1. **Clone repository & add to directory of preference**
 2. **Compile the program in the terminal or any code editor**\
     a.  Use commands ```make``` depending on operating systems (I used ```mingw32-make.exe``` to run make files)\
@@ -29,17 +29,17 @@ In Optimal Matrix Traversal, we as a group developed a program that implemented 
 Navigate to this link to the PDF for the Project Documentation for this Optimized Matrix Traversal group exercise
   - [Optimal-Matrix-Traversel-Project-Overview-Documentation.pdf](Optimal-Matrix-Traversel-Project-Overview-Documentation.pdf)
 
-## Project Algorithm Pseudo Code
+## Analysis
 1. **Prefacing the Problem with Base Case**
    - To start breaking down the calculation of the minimum distance from a cell on the bottom row to the top row, divide this into subproblems that find the minimum distance from any cell in our matrix to the top row. Doing this allows us to reuse previous results rather than computing these subproblems for each cell every time it is encountered.
    - Let's only compute the minimum distance to a cell once. When computing the minimum distance for any cell in our matrix (except cells in the top row), the minimum distance can be broken down into the cost of all previous steps plus the minimum cost of traversing to our current cell.
-   - A base case to prefacing this sub solution to travering the matrix, recurrence is when i = 0. The top row is our starting point, so we can just store the distance of traversing that top cell whenever it is encountered.\
+   - A base case to prefacing this sub solution to travering the matrix, recurrence is when i = 0. The top row is our starting point, so we can just store the distance of traversing that top cell whenever it is encountered.
    - ```D(i,j)``` function to create 2d matrix with parameters i, j 
    - In the otherwise case, if j is out of bounds (j > column.size or j < 0), then that subproblem
 will not be considered in our minimum calculation.
 ```python
-    D(i,j) = array[i,j]                 // if i = 0
-    D(i,j) =                            // Otherwise...
+    D(i,j) = array[i,j]                 # if i = 0
+    D(i,j) =                            # Otherwise...
         min(D(i-1,j) + array[i,j],     
         D(i-1,j-1)+ array[i,j] * 1.4,
         D(i-1,j+1) + array[i,j] * 1.4 
@@ -49,8 +49,8 @@ will not be considered in our minimum calculation.
    - Since we now examined this base case to expand to constructing a memoization of the minimum matrix traversal algorithm through allow parameters and wrapper functions for the memoized functions from this base case algorithm.
    - For memoizing this algorithm, we must compute the minimum path to each cell once. We can assume that each cell in our array stores the minimum distance to each matrix cell,the directions that were taken, and the starting column of that path dependent on the positionings. Here is how we can write the memoized algorithm as a recursion.
 ```python
-Input: i x j matrix with traversal values for each cell
-Output: MinTraversal to each column in bottom row of matrix
+# Input: i x j matrix with traversal values for each cell
+# Output: MinTraversal to each column in bottom row of matrix
 Algorithm: MinPathWrapper(i,j)
     array = Array(i, j)
     Initialize 'array' to -1
@@ -72,9 +72,9 @@ Algorithm: MinPathMemo(i, j)
    - By using this base case and performing iterative practice through the matrix, we can demonstrate this matrix traversal with dynammic programming practices and iterating will allow for multiple computation of each cell by knowing our matrix dimensions.
    - An iterative dynammic algorithm to this optimal matrix traversal in bruteforcing in storing the optimal route from starting at the bottom of the matrix, working backwards and storing weighted traversal value until reaching the top of the matrix (dependent on the dimensions)
 ```python
-Input: n: rows, m: col
-Input: matrix D, sizes of rows n and col m
-Output: traversed matrix T, cost of min traversal, traversal directions of min distance
+# Input: n: rows, m: col
+# Input: matrix D, sizes of rows n and col m
+# Output: traversed matrix T, cost of min traversal, traversal directions of min distance
 Algorithm: 2Dmatrixtraversal
 
     Store given matrix values in array[n][m]
@@ -116,9 +116,9 @@ Algorithm: 2Dmatrixtraversal
     - Furthermore, we can employ memoization strategy towards this solution that works similar to the previous by computing the shortest path by column on top row when iterating from bottom row to top row. Each cell in the matrix is storing traversal length of the matrix cells visited plus directions taken previously.
     - The algorithms wrapper function is slightly different to the previous, along with the memoized case in which it's applying matrix size first and is tracing and iterating thoroughly towards the end of the matrix at the top row to locate the minimum path to take for optimal matrix traversal.
 ```python
-Input: i x j matrix with traversal values for each cell
-Input: column m in top row of matrix
-Output: MinTraversal to column m in the top row
+# Input: i x j matrix with traversal values for each cell
+# Input: column m in top row of matrix
+# Output: MinTraversal to column m in the top row
 Algorithm: MinPathWrapper(i,j)
     array = Array(i, j)
     Initialize 'array' to-1
@@ -140,12 +140,7 @@ Algorithm: MinPathMemo(i, j)
     - The memoized algorithms have a time complexity of ```O(i * j)```, where ```i``` is the number of rows and j is the number of columns in the matrix. This complexity arises due to the initialization of the 2D matrix and the computation of the minimum path for each cell only once.
    -  These wrapper functions are a time complexity of ```O(i * j)``` as stated initialization and setting all values to -1 both take ```O(i * j)``` which dominates the complexity.The memoized function will only compute a value at ```[i,j]``` once, so the minimum path for every cell in our 2D Matrix is only calculated once.
 
-##  
-### Main display of active stock file selected and submitted to the form.
-![text](Optimal-Matrix-Traversel-Project-Overview-Documentation.pdf)
 
-### Additionally available window for a comparison view of a candlestick chart and associative volumes.
-![text](screenshots/Screenshot2.png)
 
 ## Licensing
 This project is licensed under the Standard Apache License - see the [LICENSE.md](LICENSE.md) file for details.
