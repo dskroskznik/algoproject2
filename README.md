@@ -141,7 +141,5 @@ Algorithm: MinPathMemo(i, j)
    -  These wrapper functions are a time complexity of ```O(i * j)``` as stated initialization and setting all values to -1 both take ```O(i * j)``` which dominates the complexity.The memoized function will only compute a value at ```[i,j]``` once, so the minimum path for every cell in our 2D Matrix is only calculated once.
 
 
-
-## Licensing
-This project is licensed under the Standard Apache License - see the [LICENSE.md](LICENSE.md) file for details.
-
+### Checkout the Authors:
+## Vu Le [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/vu-le-255601192) | Taher Ali [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/taherali181) | Dylan Skroskznik [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://www.linkedin.com/in/dylan-skroskznik) 
